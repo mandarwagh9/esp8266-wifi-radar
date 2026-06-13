@@ -1,6 +1,6 @@
 # Contributing to WiFi Radar
 
-Thanks for your interest — contributions are very welcome! 🎉
+Contributions are welcome.
 
 ## Development setup
 
