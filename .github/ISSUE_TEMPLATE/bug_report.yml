@@ -1,0 +1,36 @@
+name: Bug report
+description: Report something that isn't working
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected instead.
+    validations:
+      required: true
+  - type: input
+    id: board
+    attributes:
+      label: Board / module & flash size
+      placeholder: e.g. NodeMCU v3 (ESP-12E), 4 MB
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Flash with `pio run -t upload`
+        2. ...
+  - type: textarea
+    id: logs
+    attributes:
+      label: Serial log
+      description: Paste relevant `pio device monitor` output.
+      render: shell
+  - type: input
+    id: env
+    attributes:
+      label: Build environment
+      placeholder: PlatformIO Core 6.x / Arduino IDE 2.x, OS, espressif8266 version

@@ -1,0 +1,20 @@
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Build artifacts
+*.bin
+*.elf
+*.map
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Secrets — never commit real WiFi credentials
+src/secrets.h
