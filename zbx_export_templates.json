@@ -1,0 +1,147 @@
+{
+    "zabbix_export": {
+        "version": "6.0",
+        "date": "2026-10-19T08:42:16Z",
+        "groups": [
+            {
+                "uuid": "a3219957639b4195bc56da688f0e5952",
+                "name": "radar"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "6d2b06dc7a7b420a8ba13549a0286b16",
+                "template": "esp8266-wifi-radar",
+                "name": "esp8266 wifi radar",
+                "description": "For more info:\nhttps://github.com/morsine/esp8266-wifi-radar\nhttps://github.com/mandarwagh9/esp8266-wifi-radar",
+                "groups": [
+                    {
+                        "name": "radar"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "6cfd487ecbcf48e58325b106485335d5",
+                        "name": "baselineX100",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.52145.1.4",
+                        "key": "baselineX100",
+                        "delay": "2s"
+                    },
+                    {
+                        "uuid": "d9e7681108b9406aad5566a6c6e1d833",
+                        "name": "calibrated",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.52145.1.5",
+                        "key": "calibrated"
+                    },
+                    {
+                        "uuid": "7be4f33ffc8c4552ab0853aa4e80da45",
+                        "name": "channel",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.52145.1.7",
+                        "key": "channel",
+                        "delay": "10m"
+                    },
+                    {
+                        "uuid": "080b7c5ca426498a975417a408ad6370",
+                        "name": "motion",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.52145.1.6",
+                        "key": "motion",
+                        "delay": "2s",
+                        "triggers": [
+                            {
+                                "uuid": "7fb1570697454b28818364067f20b548",
+                                "expression": "last(/esp8266-wifi-radar/motion)=1",
+                                "name": "Radar: {HOST.NAME} Movement Detected",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c9638cb5320f4f98a3b34bbcd1677cd6",
+                        "name": "radarEnabled",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.52145.1.9",
+                        "key": "radarEnabled",
+                        "delay": "10m"
+                    },
+                    {
+                        "uuid": "8783dfae6e784df9ae1d65d1bbfee889",
+                        "name": "radarMotion",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.52145.1.10",
+                        "key": "radarMotion",
+                        "delay": "2s"
+                    },
+                    {
+                        "uuid": "0e559808e4a44234a9e47623182f5f5e",
+                        "name": "rssi",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.52145.1.1",
+                        "key": "rssi",
+                        "delay": "2s",
+                        "value_type": "FLOAT"
+                    },
+                    {
+                        "uuid": "46cc97f572ec4501ae212e8395a242c5",
+                        "name": "scoreX100",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.52145.1.2",
+                        "key": "scoreX100",
+                        "delay": "2s"
+                    },
+                    {
+                        "uuid": "f8e40b58f3dd4856b731b0842c54e6dc",
+                        "name": "stdX100",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.52145.1.3",
+                        "key": "stdX100",
+                        "delay": "2s"
+                    },
+                    {
+                        "uuid": "788d2d47e7ff40b09fcfe40e769d6db9",
+                        "name": "uptimeSec",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.52145.1.8",
+                        "key": "uptimeSec",
+                        "triggers": [
+                            {
+                                "uuid": "f0517574402d4efa9f24fc372db0ceb8",
+                                "expression": "last(/esp8266-wifi-radar/uptimeSec)<10m",
+                                "name": "Radar: {HOST.NAME} has been restarted",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "graphs": [
+            {
+                "uuid": "e7d65a501b3e4135ab5d54d7a6cc858b",
+                "name": "RadarGraph",
+                "graph_items": [
+                    {
+                        "color": "2774A4",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "esp8266-wifi-radar",
+                            "key": "scoreX100"
+                        }
+                    },
+                    {
+                        "sortorder": "1",
+                        "color": "A54F10",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "esp8266-wifi-radar",
+                            "key": "stdX100"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

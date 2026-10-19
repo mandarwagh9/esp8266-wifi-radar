@@ -16,5 +16,6 @@
 .DS_Store
 Thumbs.db
 
-# Secrets — never commit real WiFi credentials
+# No WiFi credentials file any more (WiFiManager handles setup at runtime),
+# but keep this in case someone still has a leftover local secrets.h
 src/secrets.h
